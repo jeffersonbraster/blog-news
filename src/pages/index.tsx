@@ -7,7 +7,7 @@ export default function Home() {
       <Head>
         <title>Inicio - news</title>
       </Head>
-      <h1 className={styles.title}>oie</h1>
+      <h1>oie</h1>
     </>
   );
 }
