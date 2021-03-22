@@ -1,6 +1,6 @@
 .headerContainer {
   height: 5rem;
-  border-bottom: 1px solid var(--grey-800);
+  border-bottom: 1px solid var(--gray-800);
 }
 
 .headerContent {
@@ -52,5 +52,9 @@
         background: var(--yellow-500);
       }
     }
+  }
+
+  button {
+    margin-left: auto;
   }
 }
