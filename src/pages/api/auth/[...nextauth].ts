@@ -12,7 +12,6 @@ export default NextAuth({
       scope: "read:user",
     }),
   ],
-
   callbacks: {
     async signIn(user, account, profile) {
       const { name, email } = user;
@@ -26,10 +25,7 @@ export default NextAuth({
               )
             ),
             q.Create(q.Collection("users"), { data: { name, email } }),
-            q.Get(
-              //select
-              q.Match(q.Index("user_by_email"), q.Casefold(user.email))
-            )
+            q.Get(q.Match(q.Index("user_by_email"), q.Casefold(user.email)))
           )
         );
 
@@ -37,6 +33,14 @@ export default NextAuth({
       } catch (error) {
         return false;
       }
+    },
+    jwt: async (token, user) => {
+      if (user) {
+        token.email = user.email;
+        token.name = user.name;
+      }
+
+      return Promise.resolve(token);
     },
   },
 });
